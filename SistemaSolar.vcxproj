@@ -166,6 +166,15 @@
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Sphere.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="simpleFS.fs" />
+    <None Include="simpleVS.vs" />
+    <None Include="skybox.fs" />
+    <None Include="skybox.vs" />
+    <None Include="texFS.fs" />
+    <None Include="TextShader.fs" />
+    <None Include="TextShader.vs" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -3,6 +3,7 @@
 out vec4 color;
 
 in vec2 texCoord;
+//textura del planeta
 
 uniform sampler2D ourTexture;
 

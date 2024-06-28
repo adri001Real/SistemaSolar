@@ -150,8 +150,8 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 	lastY = (GLfloat)ypos;
 	if (onRotate)
 	{
-		SceneRotateY += yoffset * 0.1f;
-		SceneRotateX += xoffset * 0.1f;
+		SceneRotateY += yoffset * 0.01f;
+		SceneRotateX += xoffset * 0.01f;
 	}
 	camera.ProcessMouseMovement(xoffset, yoffset);
 }
@@ -431,18 +431,19 @@ int main() {
 	/* TEXT RENDERING VAO-VBO*/
 
 	/* LOAD TEXTURES */
-	unsigned int texture_earth = loadTexture("resources/planets/earth2k.jpg");
-	unsigned int t_sun = loadTexture("resources/planets/2k_sun.jpg");
-	unsigned int texture_moon = loadTexture("resources/planets/2k_moon.jpg");
-	unsigned int texture_mercury = loadTexture("resources/planets/2k_mercury.jpg");
-	unsigned int texture_venus = loadTexture("resources/planets/2k_mercury.jpg");
-	unsigned int texture_mars = loadTexture("resources/planets/2k_mars.jpg");
-	unsigned int texture_jupiter = loadTexture("resources/planets/2k_jupiter.jpg");
-	unsigned int texture_saturn = loadTexture("resources/planets/2k_saturn.jpg");
-	unsigned int texture_uranus = loadTexture("resources/planets/2k_uranus.jpg");
-	unsigned int texture_neptune = loadTexture("resources/planets/2k_neptune.jpg");
+	unsigned int texture_earth = loadTexture("resources/planets/tierra.jpg");
+	unsigned int t_sun = loadTexture("resources/planets/sol.jpg");
+	unsigned int texture_moon = loadTexture("resources/planets/moon.jpg");
+	unsigned int texture_mercury = loadTexture("resources/planets/mercurio.jpg");
+	unsigned int texture_venus = loadTexture("resources/planets/venus.jpg");
+	unsigned int texture_mars = loadTexture("resources/planets/marte.jpg");
+	unsigned int texture_jupiter = loadTexture("resources/planets/jupiter.jpg");
+	unsigned int texture_saturn = loadTexture("resources/planets/saturno.jpg");
+	unsigned int texture_uranus = loadTexture("resources/planets/urano.jpg");
+	unsigned int texture_neptune = loadTexture("resources/planets/neptuno.jpg");
 	unsigned int texture_saturn_ring = loadTexture("resources/planets/r.jpg");
 	unsigned int texture_earth_clouds = loadTexture("resources/planets/2k_earth_clouds.jpg");
+	unsigned int texture_r = loadTexture("resources/planets/r.jpg");
 	/* LOAD TEXTURES */
 
 	/* SPHERE GENERATION */
@@ -537,6 +538,23 @@ int main() {
 
 		glm::mat4 model = glm::mat4(1.0f);
 
+
+		// Configurar la cámara y la iluminación
+		glm::vec3 lightColor = glm::vec3(1.0f, 1.0f, 1.0f);
+		glm::vec3 lightDirection = glm::normalize(glm::vec3(0.2f, 1.0f, 0.3f)); // Dirección de la luz (sol)
+
+		// Configurar la iluminación en el shader
+		SimpleShader.setVec3("light.direction", lightDirection);
+		SimpleShader.setVec3("light.ambient", lightColor * 0.2f);
+		SimpleShader.setVec3("light.diffuse", lightColor * 0.5f);
+		SimpleShader.setVec3("light.specular", lightColor);
+
+		// Configurar el material del sol
+		SimpleShader.setVec3("material.ambient", glm::vec3(1.0f, 0.5f, 0.31f));
+		SimpleShader.setVec3("material.diffuse", glm::vec3(1.0f, 0.5f, 0.31f));
+		SimpleShader.setVec3("material.specular", glm::vec3(0.5f, 0.5f, 0.5f));
+		SimpleShader.setFloat("material.shininess", 32.0f);
+
 		double viewX;
 		double viewZ;
 		glm::vec3 viewPos;
@@ -551,7 +569,7 @@ int main() {
 		glBindTexture(GL_TEXTURE_2D, t_sun);
 
 
-		/* SUN */
+		/* SUN 
 		glm::mat4 model_sun;
 		model_sun = glm::rotate(model_sun, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.f));
 		model_sun = glm::rotate(model_sun, (GLfloat)glfwGetTime() * glm::radians(23.5f) * 0.25f, glm::vec3(0.0f, 0.0f, 1.f));
@@ -559,6 +577,14 @@ int main() {
 		SimpleShader.setMat4("model", model_sun);
 		Sun.Draw();
 		/* SUN */
+
+		// Renderizar el sol
+		glm::mat4 model_sun = glm::mat4(1.0f);
+		model_sun = glm::rotate(model_sun, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		model_sun = glm::rotate(model_sun, (GLfloat)glfwGetTime() * glm::radians(23.5f) * 0.25f, glm::vec3(0.0f, 0.0f, 1.0f));
+		model_sun = glm::translate(model_sun, point);
+		SimpleShader.setMat4("model", model_sun);
+		Sun.Draw();
 
 		/* MERCURY */
 		glm::mat4 model_mercury;
@@ -728,7 +754,7 @@ int main() {
 		/* NEPTUNE */
 
 		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, texture_venus);
+		glBindTexture(GL_TEXTURE_2D, texture_r);
 
 		/* ORBITS */
 		glBindVertexArray(VAO_t);
@@ -776,7 +802,7 @@ int main() {
 				rr += 0.01f;
 		}
 		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, texture_venus);
+		glBindTexture(GL_TEXTURE_2D, texture_r);
 		glBindVertexArray(0);
 		/* SATURN RINGS */
 

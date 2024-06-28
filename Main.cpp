@@ -936,7 +936,7 @@ void processInput(GLFWwindow* window)
 
 	if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS)
 	{
-		bool played = loadAndPlaySound("planet.wav");
+		bool played = loadAndPlaySound("mercurio.wav");
 		PlanetView = 1;
 		Info.Nombre = "Mercurio";
 		Info.Radio = "2,439.7 KM";
@@ -952,7 +952,7 @@ void processInput(GLFWwindow* window)
 	}
 	if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS)
 	{
-		bool played = loadAndPlaySound("planet.wav");
+		bool played = loadAndPlaySound("venus.wav");
 		PlanetView = 2;
 		Info.Nombre = "Venus";
 		Info.Radio = "6,051.8 KM";
@@ -968,7 +968,7 @@ void processInput(GLFWwindow* window)
 	}
 	if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS)
 	{
-		bool played = loadAndPlaySound("planet.wav");
+		bool played = loadAndPlaySound("tierra.wav");
 		PlanetView = 3;
 		Info.Nombre = "Tierra";
 		Info.Radio = "6,371 KM";
@@ -985,7 +985,7 @@ void processInput(GLFWwindow* window)
 	}
 	if (glfwGetKey(window, GLFW_KEY_4) == GLFW_PRESS)
 	{
-		bool played = loadAndPlaySound("planet.wav");
+		bool played = loadAndPlaySound("marte.wav");
 		PlanetView = 4;
 		Info.Nombre = "Marte";
 		Info.Radio = "3,389.5 KM";
@@ -1001,7 +1001,7 @@ void processInput(GLFWwindow* window)
 	}
 	if (glfwGetKey(window, GLFW_KEY_5) == GLFW_PRESS)
 	{
-		bool played = loadAndPlaySound("planet.wav");
+		bool played = loadAndPlaySound("jupiter.wav");
 		PlanetView = 5;
 		Info.Nombre = "Jupiter";
 		Info.Radio = "69,911 KM";
@@ -1016,7 +1016,7 @@ void processInput(GLFWwindow* window)
 	}
 	if (glfwGetKey(window, GLFW_KEY_6) == GLFW_PRESS)
 	{
-		bool played = loadAndPlaySound("planet.wav");
+		bool played = loadAndPlaySound("saturno.wav");
 		PlanetView = 6;
 		Info.Nombre = "Saturno";
 		Info.Radio = "58,232 KM";
@@ -1032,7 +1032,7 @@ void processInput(GLFWwindow* window)
 	}
 	if (glfwGetKey(window, GLFW_KEY_7) == GLFW_PRESS)
 	{
-		bool played = loadAndPlaySound("planet.wav");
+		bool played = loadAndPlaySound("urano.wav");
 		PlanetView = 7;
 		Info.Nombre = "Urano";
 		Info.Radio = "25,362 KM";
@@ -1048,7 +1048,7 @@ void processInput(GLFWwindow* window)
 	}
 	if (glfwGetKey(window, GLFW_KEY_8) == GLFW_PRESS)
 	{
-		bool played = loadAndPlaySound("planet.wav");
+		bool played = loadAndPlaySound("neptuno.wav");
 		PlanetView = 8;
 		Info.Nombre = "Neptuno";
 		Info.Radio = "24,622 KM";

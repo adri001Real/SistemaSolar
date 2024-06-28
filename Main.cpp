@@ -445,7 +445,10 @@ int main() {
 	unsigned int texture_earth_clouds = loadTexture("resources/planets/2k_earth_clouds.jpg");
 	unsigned int texture_r = loadTexture("resources/planets/r.jpg");
 	/* LOAD TEXTURES */
+	 
 
+
+	//Dibujo de las esferas simulando planetas
 	/* SPHERE GENERATION */
 	Sphere Sun(100.0f, 36 * 5, 18 * 5);
 	Sphere Mercury(10.0f, 36, 18);
@@ -515,7 +518,7 @@ int main() {
 			if (camera.Position.y > 125.f && camera.Position.y < 200.0f)
 				camera.MovementSpeed = 300.0f;
 			if (camera.Position.y > 70.f && camera.Position.y < 125.0f)
-				camera.MovementSpeed = 200.0f;
+				camera.MovementSpeed = 100.0f; //200
 		}
 		/* ZOOM CONTROL */
 
@@ -523,8 +526,8 @@ int main() {
 
 		if (!onFreeCam)
 		{
-			SceneRotateY = 0.0f;
-			SceneRotateX = 0.0f;
+			SceneRotateY = 0.01f;
+			SceneRotateX = 0.01f;
 		}
 		if (camera.FreeCam || PlanetView > 0)
 			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
@@ -577,14 +580,14 @@ int main() {
 		SimpleShader.setMat4("model", model_sun);
 		Sun.Draw();
 		/* SUN */
-
-		// Renderizar el sol
-		glm::mat4 model_sun = glm::mat4(1.0f);
-		model_sun = glm::rotate(model_sun, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-		model_sun = glm::rotate(model_sun, (GLfloat)glfwGetTime() * glm::radians(23.5f) * 0.25f, glm::vec3(0.0f, 0.0f, 1.0f));
-		model_sun = glm::translate(model_sun, point);
-		SimpleShader.setMat4("model", model_sun);
-		Sun.Draw();
+		
+	// Renderizar el sol
+	glm::mat4 model_sun = glm::mat4(1.0f);
+model_sun = glm::rotate(model_sun, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+model_sun = glm::rotate(model_sun, (GLfloat)glfwGetTime() * glm::radians(23.5f) * 0.25f, glm::vec3(0.0f, 0.0f, 1.0f));
+	model_sun = glm::translate(model_sun, point);
+SimpleShader.setMat4("model", model_sun);
+Sun.Draw();
 
 		/* MERCURY */
 		glm::mat4 model_mercury;
@@ -644,8 +647,10 @@ int main() {
 
 		/* MOON */
 		glm::mat4 model_moon;
-		xx = sin(glfwGetTime() * PlanetSpeed * 67.55f) * 100.0f * 0.5f * 1.3f;
-		zz = cos(glfwGetTime() * PlanetSpeed * 67.55f) * 100.0f * 0.5f * 1.3f;
+		//Movimiento de la luna alrededor de la tierra
+		xx = sin(glfwGetTime() * PlanetSpeed * 20.0f) * 100.0f * 0.5f * 1.3f;
+		zz = cos(glfwGetTime() * PlanetSpeed * 20.0f) * 100.0f * 0.5f * 1.3f;
+
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, texture_moon);
 		model_moon = glm::rotate(model_moon, glm::radians(SceneRotateY), glm::vec3(1.0f, 0.0f, 0.0f));

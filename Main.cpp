@@ -470,7 +470,6 @@ int main() {
 
 
 	while (!glfwWindowShouldClose(window))
-
 	{
 
 		GLfloat currentFrame = (GLfloat)glfwGetTime();

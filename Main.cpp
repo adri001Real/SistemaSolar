@@ -469,7 +469,6 @@ int main() {
 	glm::vec3 PlanetsPositions[9];
 
 
-
 	while (!glfwWindowShouldClose(window))
 	{
 

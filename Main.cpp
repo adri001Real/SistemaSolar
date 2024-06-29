@@ -201,7 +201,7 @@ int main() {
 		std::cout << "ERROR::FREETYPE: Could not init FreeType Library" << std::endl;
 
 	FT_Face face;
-	if (FT_New_Face(ft, "fonts/ff.otf", 0, &face))
+	if (FT_New_Face(ft, "fonts/pompadourBoldSample.otf", 0, &face))
 		std::cout << "ERROR::FREETYPE: Failed to load font" << std::endl;
 
 	// Set size to load glyphs as
@@ -852,11 +852,11 @@ int main() {
 		case 0:
 			view = camera.GetViewMatrix();
 
-			RenderText(TextShader, "SOLAR SYSTEM ", 25.0f, SCREEN_HEIGHT - 30.0f, 0.50f, glm::vec3(0.7f, 0.7f, 0.11f));
-			RenderText(TextShader, "STARS: 1 (SUN) ", 25.0f, SCREEN_HEIGHT - 55.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
-			RenderText(TextShader, "PLANETS: 8 (MAYBE 9) ", 25.0f, SCREEN_HEIGHT - 80.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
-			RenderText(TextShader, "SATELLITES: 415 ", 25.0f, SCREEN_HEIGHT - 105.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
-			RenderText(TextShader, "COMMETS: 3441 ", 25.0f, SCREEN_HEIGHT - 130.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
+			RenderText(TextShader, "Sistema Solar ", 25.0f, SCREEN_HEIGHT - 30.0f, 0.50f, glm::vec3(0.7f, 0.7f, 0.11f));
+			RenderText(TextShader, "Estrella: 1 (Sol) ", 25.0f, SCREEN_HEIGHT - 55.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
+			RenderText(TextShader, "Planetas: 8", 25.0f, SCREEN_HEIGHT - 80.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
+			RenderText(TextShader, "Satelites: 415 ", 25.0f, SCREEN_HEIGHT - 105.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
+			RenderText(TextShader, "Cometas: 3441 ", 25.0f, SCREEN_HEIGHT - 130.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
 
 			if (camera.FreeCam)
 				RenderText(TextShader, "FREE CAM ", SCREEN_WIDTH - 200.0f, SCREEN_HEIGHT - 30.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
@@ -920,119 +920,119 @@ void processInput(GLFWwindow* window)
 	if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS)
 	{
 		PlanetView = 1;
-		Info.Nombre = "";
-		Info.Radio = "";
-		Info.DistanciaSol = "";
-		Info.Superficie = "";
-		Info.Gravedad = "";
-		Info.Masa = "";
-		Info.DuracionDia = "";
-		Info.VelocidadOrbita = "";
-		Info.Descripcion = "";
+		Info.Nombre = "Mercurio";
+		Info.Radio = "2,439.7 KM";
+		Info.DistanciaSol = "58 Millones KM";
+		Info.Superficie = "74.8 Millones KM^2";
+		Info.Gravedad = "3.7 m/s^2";
+		Info.Masa = "3.258 x 10^23 Kg";
+		Info.DuracionDia = "59 Dias 0 Horas 0 Minutos";
+		Info.VelocidadOrbita = "47.87 Km/s";
+		Info.Descripcion = "Mercurio es el iunico planeta que experimenta un dia solar cada 2 anos";
 		onFreeCam = false;
 		camera.FreeCam = false;
 	}
 	if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS)
 	{
 		PlanetView = 2;
-		Info.Nombre = "";
-		Info.Radio = "";
-		Info.DistanciaSol = "";
-		Info.Superficie = "";
-		Info.Gravedad = "";
-		Info.Masa = "";
-		Info.DuracionDia = "";
-		Info.VelocidadOrbita = "";
-		Info.Descripcion = "";
+		Info.Nombre = "Venus";
+		Info.Radio = "6,051.8 KM";
+		Info.DistanciaSol = "108.2 Millones de KM";
+		Info.Superficie = "460.2 Millones de KM^2";
+		Info.Gravedad = "8.87 m/s^2";
+		Info.Masa = "4.867 x 10^24 Kg";
+		Info.DuracionDia = "243 Dias Terrestres";
+		Info.VelocidadOrbita = "35.02 Km/s";
+		Info.Descripcion = "Venus es el planeta mas caliente del sistema solar debido a su densa atmosfera de dioxido de carbono \n esto provoca un efecto de nubes de acido sulfurico";
 		onFreeCam = false;
 		camera.FreeCam = false;
 	}
 	if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS)
 	{
 		PlanetView = 3;
-		Info.Nombre = "";
-		Info.Radio = "";
-		Info.DistanciaSol = "";
-		Info.Superficie = "";
-		Info.Gravedad = "";
-		Info.Masa = "";
-		Info.DuracionDia = "";
-		Info.VelocidadOrbita = "";
-		Info.Descripcion = "";
+		Info.Nombre = "Tierra";
+		Info.Radio = "6,371 KM";
+		Info.DistanciaSol = "149.6 Millones de KM";
+		Info.Superficie = "510.1 Millones de KM^2";
+		Info.Gravedad = "9.81 m/s^2";
+		Info.Masa = "5.972 x 10^24 Kg";
+		Info.DuracionDia = "24 Horas";
+		Info.VelocidadOrbita = "29.78 Km/s";
+		Info.Descripcion = "La Tierra es un planeta terrestre y rocoso con una superficie activa y siendo un planeta con 70% de oceano, su atmosfera es compuesta por nitrogeno oxigeno.";
 		onFreeCam = false;
 		camera.FreeCam = false;
 	}
 	if (glfwGetKey(window, GLFW_KEY_4) == GLFW_PRESS)
 	{
 		PlanetView = 4;
-		Info.Nombre = "";
-		Info.Radio = "";
-		Info.DistanciaSol = "";
-		Info.Superficie = "";
-		Info.Gravedad = "";
-		Info.Masa = "";
-		Info.DuracionDia = "";
-		Info.VelocidadOrbita = "";
-		Info.Descripcion = "";
+		Info.Nombre = "Marte";
+		Info.Radio = "3,389.5 KM";
+		Info.DistanciaSol = "227.9 Millones KM";
+		Info.Superficie = "144,8 Millones de KM^2";
+		Info.Gravedad = "3.87 m/s^2";
+		Info.Masa = "6.39 x 10^23 Kg";
+		Info.DuracionDia = "1 Dias 0 Horas 37 Minutos";
+		Info.VelocidadOrbita = "3.71 m/s^2";
+		Info.Descripcion = "Marte es conocido como el 'Planeta Rojo' es un planeta frio alcansando los -65 grados Celsius. Dado a estudios cientificos se cree que puede albergar vida a futuro para la humanidad.";
 		onFreeCam = false;
 		camera.FreeCam = false;
 	}
 	if (glfwGetKey(window, GLFW_KEY_5) == GLFW_PRESS)
 	{
 		PlanetView = 5;
-		Info.Nombre = "";
-		Info.Radio = "";
-		Info.DistanciaSol = "";
-		Info.Superficie = "";
-		Info.Gravedad = "";
-		Info.Masa = "";
-		Info.DuracionDia = "";
-		Info.VelocidadOrbita = "";
-		Info.Descripcion = "";
+		Info.Nombre = "Jupiter";
+		Info.Radio = "69,911 KM";
+		Info.DistanciaSol = "778.5 Millones de KM";
+		Info.Superficie = "61.42 Millones de KM^2";
+		Info.Gravedad = "24.79 m/s^2";
+		Info.Masa = "1.898 x 10^27 Kg";
+		Info.DuracionDia = "9.9 Horas";
+		Info.VelocidadOrbita = "13.07 Km/S";
+		Info.Descripcion = "Jupiter es el planeta mas grande dentro del sistema solar este es un gigante gaseoso y no tiene superficie solida tambien posee anillos pero son demasiado tenues para verlos con claridad.";
 		onFreeCam = false;
 	}
 	if (glfwGetKey(window, GLFW_KEY_6) == GLFW_PRESS)
 	{
 		PlanetView = 6;
-		Info.Nombre = "";
-		Info.Radio = "";
-		Info.DistanciaSol = "";
-		Info.Superficie = "";
-		Info.Gravedad = "";
-		Info.Masa = "";
-		Info.DuracionDia = "";
-		Info.VelocidadOrbita = "";
-		Info.Descripcion = "";
+		Info.Nombre = "Saturno";
+		Info.Radio = "58,232 KM";
+		Info.DistanciaSol = "1,429 Millones de KM";
+		Info.Superficie = "42.7 Millones de KM^2";
+		Info.Gravedad = "10.44 m/s^2";
+		Info.Masa = "5.683 x 10^26 Kg";
+		Info.DuracionDia = "10.7 Horas";
+		Info.VelocidadOrbita = "9.68 Km/s";
+		Info.Descripcion = "Saturno tiene los mas bellos anillos formados por hielo y roca, es un gigante compuesto de gas principalmente de hidrogeno y hielo, con una atmosfera densa y un sistema de 7 anillos separados.";
 		onFreeCam = false;
 		camera.FreeCam = false;
 	}
 	if (glfwGetKey(window, GLFW_KEY_7) == GLFW_PRESS)
 	{
 		PlanetView = 7;
-		Info.Nombre = "";
-		Info.Radio = "";
-		Info.DistanciaSol = "";
-		Info.Superficie = "";
-		Info.Gravedad = "";
-		Info.Masa = "";
-		Info.DuracionDia = "";
-		Info.VelocidadOrbita = "";
-		Info.Descripcion = "";
+		Info.Nombre = "Urano";
+		Info.Radio = "25,362 KM";
+		Info.DistanciaSol = "2,871 Millones de KM";
+		Info.Superficie = "8.083 Millones de KM^2";
+		Info.Gravedad = "8.69 m/s^2";
+		Info.Masa = "8.681 x 10^25 Kg";
+		Info.DuracionDia = "17.2 Horas";
+		Info.VelocidadOrbita = "6.80 Km/s";
+		Info.Descripcion = "Urano es un gigante de hielo compuesto de agua, metano y amoniaco sobre un nucleo rocoso este esta rodeado de 13 anillos y ha sido visitado solo una vez por la nave Voyager 2.";
 		onFreeCam = false;
 		camera.FreeCam = false;
 	}
 	if (glfwGetKey(window, GLFW_KEY_8) == GLFW_PRESS)
 	{
 		PlanetView = 8;
-		Info.Nombre = "";
-		Info.Radio = "";
-		Info.DistanciaSol = "";
-		Info.Superficie = "";
-		Info.Gravedad = "";
-		Info.Masa = "";
-		Info.DuracionDia = "";
-		Info.VelocidadOrbita = "";
-		Info.Descripcion = "";
+		Info.Nombre = "Neptuno";
+		Info.Radio = "24,622 KM";
+		Info.DistanciaSol = "4,495 Millones de KM";
+		Info.Superficie = "7.618 Millones de KM^2";
+		Info.Gravedad = "11.15 m/s^2";
+		Info.Masa = "1.024 x 10^26 Kg";
+		Info.DuracionDia = "16.1 Horas";
+		Info.VelocidadOrbita = "5.43 Km/s";
+		Info.Descripcion = "Neptuno el ultimo planeta del sistema solar, es oscuro, frio y muy ventoso, esta situado mas de 30 veces la distancia de la tierra al sol, es un gigante del hielo compuesto por agua, amoniaco y metano sobre un nucleo solido.";
 		onFreeCam = false;
 		camera.FreeCam = false;
 	}
@@ -1165,8 +1165,10 @@ void ShowInfo(Shader& s)
 	RenderText(s, "Radio:" + Info.Radio, 25.0f, SCREEN_HEIGHT - 50.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
 	RenderText(s, "Distancia desde el Sol: " + Info.DistanciaSol, 25.0f, SCREEN_HEIGHT - 70.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
 	RenderText(s, "Superficie: " + Info.Superficie, 25.0f, SCREEN_HEIGHT - 90.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
-	RenderText(s, "Gravedad: " + Info.Gravedad, 25.0f, SCREEN_HEIGHT - 119.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
+	RenderText(s, "Gravedad: " + Info.Gravedad, 25.0f, SCREEN_HEIGHT - 110.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
 	RenderText(s, "Masa: " + Info.Masa, 25.0f, SCREEN_HEIGHT - 130.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
 	RenderText(s, "Duracion del dia: " + Info.DuracionDia, 25.0f, SCREEN_HEIGHT - 150.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
 	RenderText(s, "Velocidad de orbita: " + Info.VelocidadOrbita, 25.0f, SCREEN_HEIGHT - 170.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
+	RenderText(s, "Descripcion: " + Info.Descripcion, 25.0f, SCREEN_HEIGHT - 190.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
 }
+

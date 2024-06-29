@@ -102,11 +102,17 @@ std::map<GLchar, Character> Characters;
 GLuint textVAO, textVBO;
 
 struct PlanetInfo {
-	std::string Name;
-	std::string OrbitSpeed;
-	std::string Mass;
-	std::string Gravity;
+	std::string Nombre;
+	std::string Radio;
+	std::string DistanciaSol;
+	std::string Superficie;
+	std::string Gravedad;
+	std::string Masa;
+	std::string DuracionDia;
+	std::string VelocidadOrbita;
+	std::string Descripcion;
 };
+
 PlanetInfo Info;
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos)
@@ -914,79 +920,119 @@ void processInput(GLFWwindow* window)
 	if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS)
 	{
 		PlanetView = 1;
-		Info.Name = "MERCURY";
-		Info.OrbitSpeed = "47,87";
-		Info.Mass = "0.32868";
-		Info.Gravity = "0.38";
+		Info.Nombre = "";
+		Info.Radio = "";
+		Info.DistanciaSol = "";
+		Info.Superficie = "";
+		Info.Gravedad = "";
+		Info.Masa = "";
+		Info.DuracionDia = "";
+		Info.VelocidadOrbita = "";
+		Info.Descripcion = "";
 		onFreeCam = false;
 		camera.FreeCam = false;
 	}
 	if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS)
 	{
 		PlanetView = 2;
-		Info.Name = "VENUS";
-		Info.OrbitSpeed = "35,02";
-		Info.Mass = "0.32868";
-		Info.Gravity = "0.90";
+		Info.Nombre = "";
+		Info.Radio = "";
+		Info.DistanciaSol = "";
+		Info.Superficie = "";
+		Info.Gravedad = "";
+		Info.Masa = "";
+		Info.DuracionDia = "";
+		Info.VelocidadOrbita = "";
+		Info.Descripcion = "";
 		onFreeCam = false;
 		camera.FreeCam = false;
 	}
 	if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS)
 	{
 		PlanetView = 3;
-		Info.Name = "EARTH";
-		Info.OrbitSpeed = "29,76";
-		Info.Mass = "5.97600";
-		Info.Gravity = "1";
+		Info.Nombre = "";
+		Info.Radio = "";
+		Info.DistanciaSol = "";
+		Info.Superficie = "";
+		Info.Gravedad = "";
+		Info.Masa = "";
+		Info.DuracionDia = "";
+		Info.VelocidadOrbita = "";
+		Info.Descripcion = "";
 		onFreeCam = false;
 		camera.FreeCam = false;
 	}
 	if (glfwGetKey(window, GLFW_KEY_4) == GLFW_PRESS)
 	{
 		PlanetView = 4;
-		Info.Name = "MARS";
-		Info.OrbitSpeed = "24,13";
-		Info.Mass = "0.63345";
-		Info.Gravity = "0.38";
+		Info.Nombre = "";
+		Info.Radio = "";
+		Info.DistanciaSol = "";
+		Info.Superficie = "";
+		Info.Gravedad = "";
+		Info.Masa = "";
+		Info.DuracionDia = "";
+		Info.VelocidadOrbita = "";
+		Info.Descripcion = "";
 		onFreeCam = false;
 		camera.FreeCam = false;
 	}
 	if (glfwGetKey(window, GLFW_KEY_5) == GLFW_PRESS)
 	{
 		PlanetView = 5;
-		Info.Name = "JUPITER";
-		Info.OrbitSpeed = "13,07";
-		Info.Mass = "1876.64328";
-		Info.Gravity = "2.55";
+		Info.Nombre = "";
+		Info.Radio = "";
+		Info.DistanciaSol = "";
+		Info.Superficie = "";
+		Info.Gravedad = "";
+		Info.Masa = "";
+		Info.DuracionDia = "";
+		Info.VelocidadOrbita = "";
+		Info.Descripcion = "";
 		onFreeCam = false;
 	}
 	if (glfwGetKey(window, GLFW_KEY_6) == GLFW_PRESS)
 	{
 		PlanetView = 6;
-		Info.Name = "SATURN";
-		Info.OrbitSpeed = "9,67";
-		Info.Mass = "561.80376";
-		Info.Gravity = "1.12";
+		Info.Nombre = "";
+		Info.Radio = "";
+		Info.DistanciaSol = "";
+		Info.Superficie = "";
+		Info.Gravedad = "";
+		Info.Masa = "";
+		Info.DuracionDia = "";
+		Info.VelocidadOrbita = "";
+		Info.Descripcion = "";
 		onFreeCam = false;
 		camera.FreeCam = false;
 	}
 	if (glfwGetKey(window, GLFW_KEY_7) == GLFW_PRESS)
 	{
 		PlanetView = 7;
-		Info.Name = "URANUS";
-		Info.OrbitSpeed = "6,84";
-		Info.Mass = "86.05440";
-		Info.Gravity = "0.97";
+		Info.Nombre = "";
+		Info.Radio = "";
+		Info.DistanciaSol = "";
+		Info.Superficie = "";
+		Info.Gravedad = "";
+		Info.Masa = "";
+		Info.DuracionDia = "";
+		Info.VelocidadOrbita = "";
+		Info.Descripcion = "";
 		onFreeCam = false;
 		camera.FreeCam = false;
 	}
 	if (glfwGetKey(window, GLFW_KEY_8) == GLFW_PRESS)
 	{
 		PlanetView = 8;
-		Info.Name = "NEPTUNE";
-		Info.OrbitSpeed = "5,48";
-		Info.Mass = "101.59200";
-		Info.Gravity = "1.17";
+		Info.Nombre = "";
+		Info.Radio = "";
+		Info.DistanciaSol = "";
+		Info.Superficie = "";
+		Info.Gravedad = "";
+		Info.Masa = "";
+		Info.DuracionDia = "";
+		Info.VelocidadOrbita = "";
+		Info.Descripcion = "";
 		onFreeCam = false;
 		camera.FreeCam = false;
 	}
@@ -1115,8 +1161,12 @@ void RenderText(Shader& s, std::string text, GLfloat x, GLfloat y, GLfloat scale
 
 void ShowInfo(Shader& s)
 {
-	RenderText(s, "Planet: " + Info.Name, 25.0f, SCREEN_HEIGHT - 30.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
-	RenderText(s, "Avarage Orbital Speed (km/s): " + Info.OrbitSpeed, 25.0f, SCREEN_HEIGHT - 50.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
-	RenderText(s, "Mass (kg * 10^24): " + Info.Mass, 25.0f, SCREEN_HEIGHT - 70.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
-	RenderText(s, "Gravity (g): " + Info.Gravity, 25.0f, SCREEN_HEIGHT - 90.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
+	RenderText(s, "Planeta: " + Info.Nombre, 25.0f, SCREEN_HEIGHT - 30.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
+	RenderText(s, "Radio:" + Info.Radio, 25.0f, SCREEN_HEIGHT - 50.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
+	RenderText(s, "Distancia desde el Sol: " + Info.DistanciaSol, 25.0f, SCREEN_HEIGHT - 70.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
+	RenderText(s, "Superficie: " + Info.Superficie, 25.0f, SCREEN_HEIGHT - 90.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
+	RenderText(s, "Gravedad: " + Info.Gravedad, 25.0f, SCREEN_HEIGHT - 119.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
+	RenderText(s, "Masa: " + Info.Masa, 25.0f, SCREEN_HEIGHT - 130.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
+	RenderText(s, "Duracion del dia: " + Info.DuracionDia, 25.0f, SCREEN_HEIGHT - 150.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
+	RenderText(s, "Velocidad de orbita: " + Info.VelocidadOrbita, 25.0f, SCREEN_HEIGHT - 170.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
 }

@@ -469,8 +469,8 @@ int main() {
 	glm::vec3 PlanetsPositions[9];
 
 
-
 	while (!glfwWindowShouldClose(window))
+
 	{
 
 		GLfloat currentFrame = (GLfloat)glfwGetTime();

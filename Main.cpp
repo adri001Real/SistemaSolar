@@ -14,6 +14,10 @@
 #include "Sphere.h"
 #include "Camera.h"
 
+#include <windows.h>
+#include <mmsystem.h>
+using namespace std;
+
 #include <cstdlib>
 #include <iostream>
 #include <vector>
@@ -26,6 +30,19 @@
 #include <math.h>
 
 #define TAU (M_PI * 2.0)
+
+bool loadAndPlaySound(const char* filePath) {
+	// Convertir const char* a LPCWSTR
+	wchar_t widePath[MAX_PATH];
+	MultiByteToWideChar(CP_ACP, 0, filePath, -1, widePath, MAX_PATH);
+
+	// Intenta cargar y reproducir el sonido
+	bool played = PlaySound(widePath, NULL, SND_FILENAME | SND_ASYNC | SND_NODEFAULT);
+	if (!played) {
+		std::cerr << "Failed to load or play sound: " << GetLastError() << std::endl;
+	}
+	return played;
+}
 
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
@@ -859,13 +876,13 @@ int main() {
 			RenderText(TextShader, "Cometas: 3441 ", 25.0f, SCREEN_HEIGHT - 130.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
 
 			if (camera.FreeCam)
-				RenderText(TextShader, "FREE CAM ", SCREEN_WIDTH - 200.0f, SCREEN_HEIGHT - 30.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
+				RenderText(TextShader, "CAMARA LIBRE", SCREEN_WIDTH - 200.0f, SCREEN_HEIGHT - 30.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
 			if (onFreeCam)
-				RenderText(TextShader, "STATIC CAM ", SCREEN_WIDTH - 200.0f, SCREEN_HEIGHT - 30.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
+				RenderText(TextShader, "CAMARA ESTATICA ", SCREEN_WIDTH - 200.0f, SCREEN_HEIGHT - 30.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
 			break;
 		}
 		if (PlanetView > 0)
-			RenderText(TextShader, "PLANET CAM ", SCREEN_WIDTH - 200.0f, SCREEN_HEIGHT - 30.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
+			RenderText(TextShader, "CAMARA PLANETAS", SCREEN_WIDTH - 200.0f, SCREEN_HEIGHT - 30.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
 		/* PLANET TRACKING + SHOW INFO OF PLANET */
 
 
@@ -928,7 +945,7 @@ void processInput(GLFWwindow* window)
 		Info.Masa = "3.258 x 10^23 Kg";
 		Info.DuracionDia = "59 Dias 0 Horas 0 Minutos";
 		Info.VelocidadOrbita = "47.87 Km/s";
-		Info.Descripcion = "Mercurio es el iunico planeta que experimenta un dia solar cada 2 anos";
+		Info.Descripcion = "Mercurio es el unico planeta que experimenta un dia solar cada 2 anos";
 		onFreeCam = false;
 		camera.FreeCam = false;
 	}
@@ -943,7 +960,7 @@ void processInput(GLFWwindow* window)
 		Info.Masa = "4.867 x 10^24 Kg";
 		Info.DuracionDia = "243 Dias Terrestres";
 		Info.VelocidadOrbita = "35.02 Km/s";
-		Info.Descripcion = "Venus es el planeta mas caliente del sistema solar debido a su densa atmosfera de dioxido de carbono \n esto provoca un efecto de nubes de acido sulfurico";
+		Info.Descripcion = "Venus es el planeta mas caliente del sistema solar debido a su densa atmosfera de dioxido de carbono";
 		onFreeCam = false;
 		camera.FreeCam = false;
 	}
@@ -958,7 +975,8 @@ void processInput(GLFWwindow* window)
 		Info.Masa = "5.972 x 10^24 Kg";
 		Info.DuracionDia = "24 Horas";
 		Info.VelocidadOrbita = "29.78 Km/s";
-		Info.Descripcion = "La Tierra es un planeta terrestre y rocoso con una superficie activa y siendo un planeta con 70% de oceano, su atmosfera es compuesta por nitrogeno oxigeno.";
+		Info.Descripcion = "La Tierra es un planeta terrestre y rocoso con una superficie activa y siendo un planeta con 70% de oceano";
+		
 		onFreeCam = false;
 		camera.FreeCam = false;
 	}
@@ -973,7 +991,7 @@ void processInput(GLFWwindow* window)
 		Info.Masa = "6.39 x 10^23 Kg";
 		Info.DuracionDia = "1 Dias 0 Horas 37 Minutos";
 		Info.VelocidadOrbita = "3.71 m/s^2";
-		Info.Descripcion = "Marte es conocido como el 'Planeta Rojo' es un planeta frio alcansando los -65 grados Celsius. Dado a estudios cientificos se cree que puede albergar vida a futuro para la humanidad.";
+		Info.Descripcion = "Marte es conocido como el 'Planeta Rojo' es un planeta frio alcansando los -65 grados Celsius.";
 		onFreeCam = false;
 		camera.FreeCam = false;
 	}
@@ -988,7 +1006,7 @@ void processInput(GLFWwindow* window)
 		Info.Masa = "1.898 x 10^27 Kg";
 		Info.DuracionDia = "9.9 Horas";
 		Info.VelocidadOrbita = "13.07 Km/S";
-		Info.Descripcion = "Jupiter es el planeta mas grande dentro del sistema solar este es un gigante gaseoso y no tiene superficie solida tambien posee anillos pero son demasiado tenues para verlos con claridad.";
+		Info.Descripcion = "Jupiter es el planeta mas grande dentro del sistema solar, un gigante gaseoso y posee anillos tenues.";
 		onFreeCam = false;
 	}
 	if (glfwGetKey(window, GLFW_KEY_6) == GLFW_PRESS)
@@ -1002,7 +1020,7 @@ void processInput(GLFWwindow* window)
 		Info.Masa = "5.683 x 10^26 Kg";
 		Info.DuracionDia = "10.7 Horas";
 		Info.VelocidadOrbita = "9.68 Km/s";
-		Info.Descripcion = "Saturno tiene los mas bellos anillos formados por hielo y roca, es un gigante compuesto de gas principalmente de hidrogeno y hielo, con una atmosfera densa y un sistema de 7 anillos separados.";
+		Info.Descripcion = "Saturno tiene los mas bellos anillos formados por hielo y roca, compuesto de gas principalmente de hidrogeno y hielo.";
 		onFreeCam = false;
 		camera.FreeCam = false;
 	}
@@ -1017,7 +1035,7 @@ void processInput(GLFWwindow* window)
 		Info.Masa = "8.681 x 10^25 Kg";
 		Info.DuracionDia = "17.2 Horas";
 		Info.VelocidadOrbita = "6.80 Km/s";
-		Info.Descripcion = "Urano es un gigante de hielo compuesto de agua, metano y amoniaco sobre un nucleo rocoso este esta rodeado de 13 anillos y ha sido visitado solo una vez por la nave Voyager 2.";
+		Info.Descripcion = "Urano es un gigante de hielo compuesto de agua, metano y amoniaco sobre un nucleo rocoso, esta rodeado de 13 anillos.";
 		onFreeCam = false;
 		camera.FreeCam = false;
 	}
@@ -1032,7 +1050,7 @@ void processInput(GLFWwindow* window)
 		Info.Masa = "1.024 x 10^26 Kg";
 		Info.DuracionDia = "16.1 Horas";
 		Info.VelocidadOrbita = "5.43 Km/s";
-		Info.Descripcion = "Neptuno el ultimo planeta del sistema solar, es oscuro, frio y muy ventoso, esta situado mas de 30 veces la distancia de la tierra al sol, es un gigante del hielo compuesto por agua, amoniaco y metano sobre un nucleo solido.";
+		Info.Descripcion = "Neptuno el ultimo planeta del sistema solar, es oscuro, frio y muy ventoso, es un gigante del hielo compuesto por agua, amoniaco y metano.";
 		onFreeCam = false;
 		camera.FreeCam = false;
 	}

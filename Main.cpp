@@ -869,20 +869,20 @@ int main() {
 		case 0:
 			view = camera.GetViewMatrix();
 
-			RenderText(TextShader, "Sistema Solar ", 25.0f, SCREEN_HEIGHT - 30.0f, 0.50f, glm::vec3(0.7f, 0.7f, 0.11f));
-			RenderText(TextShader, "Estrella: 1 (Sol) ", 25.0f, SCREEN_HEIGHT - 55.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
-			RenderText(TextShader, "Planetas: 8", 25.0f, SCREEN_HEIGHT - 80.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
-			RenderText(TextShader, "Satelites: 415 ", 25.0f, SCREEN_HEIGHT - 105.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
-			RenderText(TextShader, "Cometas: 3441 ", 25.0f, SCREEN_HEIGHT - 130.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
+			RenderText(TextShader, "Sistema Solar ", 25.0f, SCREEN_HEIGHT - 30.0f, 0.50f, glm::vec3(1.0f));
+			RenderText(TextShader, "Estrella: 1 (Sol) ", 25.0f, SCREEN_HEIGHT - 55.0f, 0.35f, glm::vec3(1.0f));
+			RenderText(TextShader, "Planetas: 8", 25.0f, SCREEN_HEIGHT - 80.0f, 0.35f, glm::vec3(1.0f));
+			RenderText(TextShader, "Satelites: 415 ", 25.0f, SCREEN_HEIGHT - 105.0f, 0.35f, glm::vec3(1.0f));
+			RenderText(TextShader, "Cometas: 3441 ", 25.0f, SCREEN_HEIGHT - 130.0f, 0.35f, glm::vec3(1.0f));
 
 			if (camera.FreeCam)
-				RenderText(TextShader, "CAMARA LIBRE", SCREEN_WIDTH - 200.0f, SCREEN_HEIGHT - 30.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
+				RenderText(TextShader, "SOLAR QUEST", SCREEN_WIDTH - 270.0f, SCREEN_HEIGHT - 45.0f, 0.70f, glm::vec3(1.0f));
 			if (onFreeCam)
-				RenderText(TextShader, "CAMARA ESTATICA ", SCREEN_WIDTH - 200.0f, SCREEN_HEIGHT - 30.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
+				RenderText(TextShader, "SOLAR QUEST ", SCREEN_WIDTH - 270.0f, SCREEN_HEIGHT - 45.0f, 0.70f, glm::vec3(1.0f));
 			break;
 		}
 		if (PlanetView > 0)
-			RenderText(TextShader, "CAMARA PLANETAS", SCREEN_WIDTH - 200.0f, SCREEN_HEIGHT - 30.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
+			RenderText(TextShader, "SOLAR QUEST", SCREEN_WIDTH - 270.0f, SCREEN_HEIGHT - 45.0f, 0.70f, glm::vec3(1.0f));
 		/* PLANET TRACKING + SHOW INFO OF PLANET */
 
 
@@ -1187,14 +1187,14 @@ void RenderText(Shader& s, std::string text, GLfloat x, GLfloat y, GLfloat scale
 
 void ShowInfo(Shader& s)
 {
-	RenderText(s, "Planeta: " + Info.Nombre, 25.0f, SCREEN_HEIGHT - 30.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
-	RenderText(s, "Radio:" + Info.Radio, 25.0f, SCREEN_HEIGHT - 50.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
-	RenderText(s, "Distancia desde el Sol: " + Info.DistanciaSol, 25.0f, SCREEN_HEIGHT - 70.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
-	RenderText(s, "Superficie: " + Info.Superficie, 25.0f, SCREEN_HEIGHT - 90.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
-	RenderText(s, "Gravedad: " + Info.Gravedad, 25.0f, SCREEN_HEIGHT - 110.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
-	RenderText(s, "Masa: " + Info.Masa, 25.0f, SCREEN_HEIGHT - 130.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
-	RenderText(s, "Duracion del dia: " + Info.DuracionDia, 25.0f, SCREEN_HEIGHT - 150.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
-	RenderText(s, "Velocidad de orbita: " + Info.VelocidadOrbita, 25.0f, SCREEN_HEIGHT - 170.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
-	RenderText(s, "Descripcion: " + Info.Descripcion, 25.0f, SCREEN_HEIGHT - 190.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
+	RenderText(s, "Planeta: " + Info.Nombre, 25.0f, SCREEN_HEIGHT - 45.0f, 0.50f, glm::vec3(1.0f));
+	RenderText(s, "Radio:" + Info.Radio, 25.0f, SCREEN_HEIGHT - 560.0f, 0.35f, glm::vec3(1.0f));
+	RenderText(s, "Distancia desde el Sol: " + Info.DistanciaSol, 25.0f, SCREEN_HEIGHT - 580.0f, 0.35f, glm::vec3(1.0f));
+	RenderText(s, "Superficie: " + Info.Superficie, 25.0f, SCREEN_HEIGHT - 600.0f, 0.35f, glm::vec3(1.0f));
+	RenderText(s, "Gravedad: " + Info.Gravedad, 25.0f, SCREEN_HEIGHT - 620.0f, 0.35f, glm::vec3(1.0f));
+	RenderText(s, "Masa: " + Info.Masa, 25.0f, SCREEN_HEIGHT - 640.0f, 0.35f, glm::vec3(1.0f));
+	RenderText(s, "Duracion del dia: " + Info.DuracionDia, 25.0f, SCREEN_HEIGHT - 660.0f, 0.35f, glm::vec3(1.0f));
+	RenderText(s, "Velocidad de orbita: " + Info.VelocidadOrbita, 25.0f, SCREEN_HEIGHT - 680.0f, 0.35f, glm::vec3(1.0f));
+	RenderText(s, "Descripcion: " + Info.Descripcion, 25.0f, SCREEN_HEIGHT - 700.0f, 0.35f, glm::vec3(1.0f));
 }
 

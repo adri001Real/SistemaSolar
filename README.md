@@ -1,4 +1,4 @@
-# Educational simulation or the Solar System with OpenGL
+# Educational simulation of the Solar System with OpenGL
 
 [![imagen1.jpg](https://i.postimg.cc/qqXrNrL0/imagen1.jpg)](https://postimg.cc/y3dtGwtr)
 

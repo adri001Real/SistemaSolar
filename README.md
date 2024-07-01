@@ -8,7 +8,7 @@ Educational Solar System Program is an interactive educational software utilizin
 
 ## Project Overview
 
-In this project, we have developed a virtual walkthrough using OpenGL, a powerful graphics API. Users can explore the solar system while learning about each planet's characteristics and other celestial bodies.
+In this project, we have developed a virtual walkthrough using OpenGL, a powerful graphics API. Users can explore the solar system while learning about each planet's characteristics and other celestial.
 
 ### Key Features
 
